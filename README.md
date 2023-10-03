@@ -13,4 +13,4 @@ The Uniqloh Web App is a simple e-commerce-like website that offers a selection 
 
 ## Preview Application
 
-You can preview the Uniqloh Web App by clicking on the following link: [Preview Application](https://drive.google.com/drive/folders/1sJkTjpme2qjgO5R2YkGeDRswfJ1nDC8o?usp=sharing)
+Screenshot Application: [Link to Screenshot Folder](https://drive.google.com/drive/folders/1sJkTjpme2qjgO5R2YkGeDRswfJ1nDC8o?usp=sharing)
