@@ -1,0 +1,26 @@
+[
+  {
+    "username": "kresna1",
+    "email": "kresna1@mail.com",
+    "password": "pw0909",
+    "role": "admin",
+    "phoneNumber": "08123",
+    "address": "Jakarta, Indonesia"
+  },
+  {
+    "username": "kresna2",
+    "email": "kresna2@mail.com",
+    "password": "pw0909",
+    "role": "admin",
+    "phoneNumber": "08123",
+    "address": "Jakarta, Indonesia"
+  },
+  {
+    "username": "kresna3",
+    "email": "kresna3@mail.com",
+    "password": "pw0909",
+    "role": "admin",
+    "phoneNumber": "08123",
+    "address": "Jakarta, Indonesia"
+  }
+]

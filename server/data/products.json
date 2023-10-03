@@ -1,0 +1,218 @@
+[
+  {
+    "name": "Basic T-Shirt",
+    "description": "A comfortable and versatile basic t-shirt.",
+    "price": 24,
+    "stock": 100,
+    "imgUrl": "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+    "categoryId": 1,
+    "authorId": 1
+  },
+  {
+    "name": "Slim-Fit Jeans",
+    "description": "Classic slim-fit jeans with a perfect fit.",
+    "price": 31,
+    "stock": 80,
+    "imgUrl": "https://images.unsplash.com/photo-1576995853123-5a10305d93c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+    "categoryId": 2,
+    "authorId": 1
+  },
+  {
+    "name": "Floral Maxi Dress",
+    "description": "A beautiful floral maxi dress.",
+    "price": 33,
+    "stock": 75,
+    "imgUrl": "https://images.unsplash.com/photo-1519657337289-077653f724ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+    "categoryId": 3,
+    "authorId": 2
+  },
+  {
+    "name": "Cozy Knit Sweater",
+    "description": "Stay warm and stylish with this cozy knit sweater.",
+    "price": 36,
+    "stock": 90,
+    "imgUrl": "https://images.unsplash.com/photo-1604882767135-b41fac508fff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+    "categoryId": 4,
+    "authorId": 3
+  },
+  {
+    "name": "Elegant Hats",
+    "description": "Cool and stylish hats.",
+    "price": 20,
+    "stock": 60,
+    "imgUrl": "https://images.unsplash.com/photo-1533827432537-70133748f5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+    "categoryId": 5,
+    "authorId": 3
+  },
+  {
+    "name": "Basic Pants",
+    "description": "Stylish with amazing pants.",
+    "price": 29,
+    "stock": 90,
+    "imgUrl": "https://images.unsplash.com/photo-1540221652346-e5dd6b50f3e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=869&q=80",
+    "categoryId": 6,
+    "authorId": 3
+  },
+  {
+    "name": "Striped T-Shirt",
+    "description": "A striped t-shirt with a fashionable twist.",
+    "price": 44,
+    "stock": 100,
+    "imgUrl": "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+    "categoryId": 1,
+    "authorId": 1
+  },
+  {
+    "name": "Vintage Jeans",
+    "description": "Vintage-style jeans with a timeless appeal.",
+    "price": 39,
+    "stock": 80,
+    "imgUrl": "https://images.unsplash.com/photo-1576995853123-5a10305d93c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+    "categoryId": 2,
+    "authorId": 1
+  },
+  {
+    "name": "Chic Dress",
+    "description": "A chic dress that combines style and comfort.",
+    "price": 39,
+    "stock": 75,
+    "imgUrl": "https://images.unsplash.com/photo-1519657337289-077653f724ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+    "categoryId": 3,
+    "authorId": 2
+  },
+  {
+    "name": "Woolen Sweater",
+    "description": "A warm woolen sweater for chilly days.",
+    "price": 26,
+    "stock": 91,
+    "imgUrl": "https://images.unsplash.com/photo-1604882767135-b41fac508fff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+    "categoryId": 4,
+    "authorId": 3
+  },
+  {
+    "name": "Sun Shirt",
+    "description": "Sun shirt to keep you stylish and protected.",
+    "price": 29,
+    "stock": 73,
+    "imgUrl": "https://images.unsplash.com/photo-1533827432537-70133748f5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+    "categoryId": 8,
+    "authorId": 3
+  },
+  {
+    "name": "Casual Pants",
+    "description": "Casual pants that offer both style and flexibility.",
+    "price": 49,
+    "stock": 92,
+    "imgUrl": "https://images.unsplash.com/photo-1540221652346-e5dd6b50f3e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=869&q=80",
+    "categoryId": 6,
+    "authorId": 3
+  },
+  {
+    "name": "Sporty Hoodie",
+    "description": "A sporty hoodie for an active lifestyle.A sporty hoodie for an active lifestyle.",
+    "price": 20,
+    "stock": 97,
+    "imgUrl": "https://images.unsplash.com/photo-1533827432537-70133748f5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+    "categoryId": 5,
+    "authorId": 3
+  },
+  {
+    "name": "Printed Shirt",
+    "description": "A printed shirt to express your unique style.",
+    "price": 49,
+    "stock": 73,
+    "imgUrl": "https://images.unsplash.com/photo-1540221652346-e5dd6b50f3e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=869&q=80",
+    "categoryId": 6,
+    "authorId": 3
+  },
+  {
+    "name": "Graphic T-Shirt",
+    "description": "A graphic t-shirt featuring eye-catching designs.",
+    "price": 24,
+    "stock": 60,
+    "imgUrl": "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+    "categoryId": 1,
+    "authorId": 1
+  },
+  {
+    "name": "Ripped Jeans",
+    "description": "Ripped jeans for an edgy and fashionable look.",
+    "price": 22,
+    "stock": 53,
+    "imgUrl": "https://images.unsplash.com/photo-1576995853123-5a10305d93c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+    "categoryId": 2,
+    "authorId": 1
+  },
+  {
+    "name": "Evening Dres",
+    "description": "An exquisite evening dress for formal events.",
+    "price": 32,
+    "stock": 77,
+    "imgUrl": "https://images.unsplash.com/photo-1519657337289-077653f724ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+    "categoryId": 3,
+    "authorId": 2
+  },
+  {
+    "name": "Knit Sweater",
+    "description": "A knitted sweater that adds texture to your outfit.",
+    "price": 29,
+    "stock": 60,
+    "imgUrl": "https://images.unsplash.com/photo-1604882767135-b41fac508fff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+    "categoryId": 4,
+    "authorId": 3
+  },
+  {
+    "name": "Short T-Shirt",
+    "description": "A comfortable and versatile short t-shirt.",
+    "price": 24,
+    "stock": 100,
+    "imgUrl": "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+    "categoryId": 1,
+    "authorId": 1
+  },
+  {
+    "name": "Elegant Jeans",
+    "description": "Classic slim-fit jeans with a perfect fit.",
+    "price": 39,
+    "stock": 90,
+    "imgUrl": "https://images.unsplash.com/photo-1576995853123-5a10305d93c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+    "categoryId": 2,
+    "authorId": 1
+  },
+  {
+    "name": "Checkered Dress",
+    "description": "A beautiful checkered dress.",
+    "price": 42,
+    "stock": 69,
+    "imgUrl": "https://images.unsplash.com/photo-1519657337289-077653f724ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+    "categoryId": 3,
+    "authorId": 2
+  },
+  {
+    "name": "Basic Plain Shirt",
+    "description": "Stay warm and stylish with this shirt.",
+    "price": 39,
+    "stock": 90,
+    "imgUrl": "https://images.unsplash.com/photo-1604882767135-b41fac508fff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+    "categoryId": 8,
+    "authorId": 3
+  },
+  {
+    "name": "Cozy Simple Hats",
+    "description": "Cool and stylish hats.",
+    "price": 34,
+    "stock": 82,
+    "imgUrl": "https://images.unsplash.com/photo-1533827432537-70133748f5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+    "categoryId": 5,
+    "authorId": 3
+  },
+  {
+    "name": "Basic Hoodie",
+    "description": "Stylish with amazing hoodie.",
+    "price": 29,
+    "stock": 79,
+    "imgUrl": "https://images.unsplash.com/photo-1540221652346-e5dd6b50f3e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=869&q=80",
+    "categoryId": 7,
+    "authorId": 3
+  }
+]
