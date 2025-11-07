@@ -1,170 +1,105 @@
-const { User, Category, Product, History } = require("../models");
+const { query } = require('../db');
 
 class ProductsController {
   static async read(req, res, next) {
     try {
-      const products = await Product.findAll({
-        include: [
-          {
-            model: Category,
-          },
-          {
-            model: User,
-          },
-        ],
-        order: [["id", "ASC"]],
-      });
-      res.status(200).json(products);
-    } catch (error) {
-      next(error);
-    }
+      const sql = `SELECT p.id, p.name, p.description, p.price, p.stock, p."imgUrl", p.status,
+                          p."categoryId", c.name AS category_name,
+                          p."authorId", u.email AS author_email,
+                          p."createdAt", p."updatedAt"
+                   FROM products p
+                   JOIN categories c ON c.id = p."categoryId"
+                   JOIN users u ON u.id = p."authorId"
+                   ORDER BY p.id ASC`;
+      const { rows } = await query(sql);
+      res.status(200).json(rows);
+    } catch (error) { next(error); }
   }
 
   static async createForm(req, res, next) {
     try {
-      const category = await Category.findAll();
-      res.status(200).json(category);
-    } catch (error) {
-      next(error);
-    }
+      const { rows } = await query(`SELECT id, name FROM categories ORDER BY id ASC`);
+      res.status(200).json(rows);
+    } catch (error) { next(error); }
   }
 
   static async create(req, res, next) {
     try {
-      const { name, description, price, stock, imgUrl, categoryId } = req.body;
-      const authorId = req.user.id;
-      const status = "Active";
+      const { name, description, price, stock, imgUrl, categoryId, status } = req.body;
+      const authorId = req.user?.id;
+      const sql = `INSERT INTO products (name, description, price, stock, "imgUrl", "categoryId", "authorId", status, "createdAt","updatedAt")
+                   VALUES ($1,$2,$3,$4,$5,$6,$7, COALESCE($8,'Active'), NOW(), NOW())
+                   RETURNING *`;
+      const params = [name, description, price, stock, imgUrl, categoryId, authorId, status];
+      const { rows } = await query(sql, params);
+      const newProduct = rows[0];
+      res.status(201).json(newProduct);
 
-      const newProduct = await Product.create({
-        name,
-        description,
-        price,
-        stock,
-        imgUrl,
-        categoryId,
-        authorId,
-        status,
-      });
-
-      await res.status(201).json(newProduct);
-
-      const descHistory = `Product with id ${newProduct.id} created`;
-      const updatedBy = req.user.email;
-      await History.create({
-        name,
-        description: descHistory,
-        updatedBy,
-      });
-    } catch (error) {
-      next(error);
-    }
+      const desc = `Product with id ${newProduct.id} created`;
+      await query(`INSERT INTO histories (name, description, "updatedBy", "createdAt","updatedAt")
+                   VALUES ($1,$2,$3,NOW(),NOW())`,
+                   [newProduct.name, desc, req.user?.email || 'system']);
+    } catch (error) { next(error); }
   }
 
   static async detail(req, res, next) {
     try {
-      const productFound = await Product.findByPk(req.params.id);
-      if (!productFound) {
-        throw { name: "NotFound" };
-      }
-      res.status(200).json(productFound);
-    } catch (error) {
-      next(error);
-    }
+      const id = req.params.id;
+      const { rows } = await query(`SELECT * FROM products WHERE id=$1`, [id]);
+      if (!rows[0]) return res.status(404).json({ message: 'Product not found' });
+      res.status(200).json(rows[0]);
+    } catch (error) { next(error); }
   }
 
   static async delete(req, res, next) {
     try {
-      const productFound = await Product.findByPk(req.params.id);
-      if (!productFound) {
-        throw { name: "NotFound" };
-      }
-      await Product.destroy({
-        where: { id: req.params.id },
-      });
-      res.status(200).json({
-        message: `${productFound.name} success to delete`,
-      });
-    } catch (error) {
-      next(error);
-    }
+      const id = req.params.id;
+      const del = await query(`DELETE FROM products WHERE id=$1`, [id]);
+      if (!del.rowCount) return res.status(404).json({ message: 'Product not found' });
+      res.status(200).json(`Product with id ${id} deleted`);
+      await query(`INSERT INTO histories (name, description, "updatedBy", "createdAt","updatedAt")
+                   VALUES ($1,$2,$3,NOW(),NOW())`,
+                   [String(id), `Product with id ${id} deleted`, req.user?.email || 'system']);
+    } catch (error) { next(error); }
   }
 
   static async edit(req, res, next) {
     try {
-      const { id } = req.params;
-      const productFound = await Product.findByPk(id);
-      const { name, description, price, stock, imgUrl, categoryId } = req.body;
-      const authorId = productFound.authorId;
-      // test
-      await Product.update(
-        {
-          name,
-          description,
-          price,
-          stock,
-          imgUrl,
-          categoryId,
-          authorId,
-        },
-        {
-          where: {
-            id,
-          },
-        }
+      const id = req.params.id;
+      const { name, description, price, stock, imgUrl, categoryId, authorId } = req.body;
+      const { rows } = await query(
+        `UPDATE products
+         SET name=$1, description=$2, price=$3, stock=$4, "imgUrl"=$5, "categoryId"=$6, "authorId"=COALESCE($7,"authorId"), "updatedAt"=NOW()
+         WHERE id=$8
+         RETURNING *`,
+         [name, description, price, stock, imgUrl, categoryId, authorId, id]
       );
+      if (!rows[0]) return res.status(404).json({ message: 'Product not found' });
       res.status(201).json(`Product with id ${id} updated`);
-
-      const descHistory = `Product with id ${id} updated`;
-      const updatedBy = req.user.email;
-      await History.create({
-        name,
-        description: descHistory,
-        updatedBy,
-      });
-    } catch (error) {
-      next(error);
-    }
+      await query(`INSERT INTO histories (name, description, "updatedBy", "createdAt","updatedAt")
+                   VALUES ($1,$2,$3,NOW(),NOW())`,
+                   [rows[0].name, `Product with id ${id} updated`, req.user?.email || 'system']);
+    } catch (error) { next(error); }
   }
 
   static async status(req, res, next) {
     try {
-      const { id } = req.params;
+      const id = req.params.id;
       const { status } = req.body;
-      const oldStatus = req.product.status;
-      const authorId = req.user.id;
-
-      await Product.update({ status }, { where: { id } });
-      // console.log(id, oldStatus, status, "<<<");
-      res
-        .status(201)
-        .json(
-          `Product status with id ${id} has been updated from ${oldStatus} into ${status}`
-        );
-
-      const descHistory = `Product status with id ${id} has been updated from ${oldStatus} into ${status}`;
-      const updatedBy = req.user.email;
-      await History.create({
-        name: req.product.name,
-        description: descHistory,
-        updatedBy,
-      });
-    } catch (error) {
-      next(error);
-    }
+      const { rows } = await query(`UPDATE products SET status=$1, "updatedAt"=NOW() WHERE id=$2 RETURNING *`, [status, id]);
+      if (!rows[0]) return res.status(404).json({ message: 'Product not found' });
+      res.status(200).json(`Product status with id ${id} has been updated into ${status}`);
+      await query(`INSERT INTO histories (name, description, "updatedBy", "createdAt","updatedAt")
+                   VALUES ($1,$2,$3,NOW(),NOW())`,
+                   [rows[0].name, `Product status with id ${id} has been updated into ${status}`, req.user?.email || 'system']);
+    } catch (error) { next(error); }
   }
 
   static async history(req, res, next) {
     try {
-      const listHistory = await History.findAll({
-        order: [["id", "DESC"]],
-      });
-      // const updatedByName = req.user.name
-      // console.log(listHistory, "DISINIIIII<<<");
-      res.status(200).json(listHistory);
-    } catch (error) {
-      // console.log(error, "<<<<<<<<<<<<<<<<<>>>>>>>>>>>");
-      next(error);
-    }
+      const { rows } = await query(`SELECT * FROM histories ORDER BY id DESC`);
+      res.status(200).json(rows);
+    } catch (error) { next(error); }
   }
 }
 

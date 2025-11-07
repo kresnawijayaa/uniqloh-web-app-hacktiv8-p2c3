@@ -1,29 +1,28 @@
-const { Product } = require("../models");
+// server/middleware/deleteProductGuard.js
+const { query } = require("../db");
 
 const deleteProductGuard = async (req, res, next) => {
   try {
     const productId = req.params.id;
-    const product = await Product.findByPk(productId);
+    const { rows } = await query(`SELECT * FROM products WHERE id = $1`, [productId]);
+    const product = rows[0];
     if (!product) {
-      throw {
-        name: "NotFound",
-        message: `Product with id ${productId} not found`,
-      };
+      throw { name: "NotFound", message: `Product with id ${productId} not found` };
     }
-    if (req.user.role === "staff") {
+
+    const role = (req.user?.role || "").toLowerCase();
+    if (role === "staff") {
       if (product.authorId === req.user.id) {
         req.product = product;
-        next();
+        return next();
       } else {
-        throw {
-          name: "Forbidden",
-          message: "Forbidden Access",
-        };
+        throw { name: "Forbidden", message: "Forbidden Access" };
       }
-    } else {
-      req.product = product;
-      next();
     }
+
+    // Admin / role lain: boleh
+    req.product = product;
+    next();
   } catch (error) {
     next(error);
   }
