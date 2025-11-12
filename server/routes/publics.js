@@ -16,7 +16,10 @@ router.get("/products", PubProductsController.read);
 router.get("/products/:id", PubProductsController.detail);
 router.get("/categories", PubCategoriesController.read);
 router.use(authenticationCustomer);
+// favorites
 router.get("/favorites", PubFavoritesController.read);
 router.post("/favorites/:id", PubFavoritesController.add);
+router.delete("/favorites/:id", PubFavoritesController.remove);
+router.post("/favorites/:id/toggle", PubFavoritesController.toggle);
 
 module.exports = router;
